@@ -10,28 +10,21 @@ class Teacher(Person):
         return self.__number_of_courses
 
     def add_course(self, course):
-        is_exist = False
-        for i in self.__courses:
-            if i == course:
-                is_exist = True
-        
-        if is_exist:
+        if course in self.__courses:
             return False
-        else:
-            self.__courses.append(course)
-            self.__number_of_courses = len(self.__courses)
+        
+        self.__courses.append(course)
+        self.__number_of_courses = len(self.__courses)
+        return True
+        
     
     def remove_course(self, course):
-        is_exist = False
-        for i in self.__courses:
-            if i == course:
-                is_exist = True
-
-        if is_exist:
+        if course in self.__courses:
             self.__courses.remove(course)
             self.__number_of_courses = len(self.__courses)
-        else:
-            return False
+            return True
+        
+        return False
 
     # toString()
     def __str__(self):
